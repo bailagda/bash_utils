@@ -15,7 +15,8 @@ test: all
 
 checkcheck: s21_cat
 	cppcheck --enable=all --suppress=missingIncludeSystem s21_cat.c s21_cat.h
-	CK_FORK=no leaks -atExit -- s21_cat
+	python3 ../../materials/linters/cpplint.py --extensions=c ./s21_cat.c
+	CK_FORK=no leaks -atExit -- ./s21_cat
 
 check: checkcheck clean
 
